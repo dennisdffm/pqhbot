@@ -1,0 +1,29 @@
+version: "3.8"
+
+services: 
+    
+    nodered:
+        container_name: "NodeRed"
+        image: "nodered/node-red"
+        restart: on-failure
+        ports:
+            - "1880:1880"
+        volumes:
+            - vol-nodered-data:/data
+
+    portainer:
+        container_name: "Portainer"
+        image: "portainer/portainer-ce"
+        restart: on-failure
+        ports: 
+            - "9000:9000"
+        volumes: 
+            - vol-portainer-data:/data
+            - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+    vol-nodered-data:
+        name: nodered-data
+    vol-portainer-data:
+        name: portainer-data
+    
