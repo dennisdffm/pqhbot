@@ -4,12 +4,18 @@ services:
     
     nodered:
         container_name: "NodeRed"
-        image: "nodered/node-red"
+        build: .
         restart: on-failure
         ports:
             - "1880:1880"
+        env_file:
+            - envs.env
+            # - envs_test.env
         volumes:
-            - vol-nodered-data:/data
+            - ./Config:/Config
+            - ./Data/flows.json:/data/flows.json
+            - ./Data/flows_cred.json:/data/flows_cred.json
+            - ./Data/settings.js:/data/settings.js
 
     portainer:
         container_name: "Portainer"
@@ -22,8 +28,6 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
 
 volumes:
-    vol-nodered-data:
-        name: nodered-data
     vol-portainer-data:
         name: portainer-data
     
