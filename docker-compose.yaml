@@ -13,9 +13,9 @@ services:
             # - envs_test.env
         volumes:
             - ./Config:/Config
-            - ./Data/flows.json:/data/flows.json
-            - ./Data/flows_cred.json:/data/flows_cred.json
-            - ./Data/settings.js:/data/settings.js
+            # - ./Data/flows.json:/data/flows.json
+            # - ./Data/flows_cred.json:/data/flows_cred.json
+            # - ./Data/settings.js:/data/settings.js
 
     portainer:
         container_name: "Portainer"
