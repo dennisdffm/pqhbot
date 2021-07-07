@@ -9,7 +9,7 @@ services:
         ports:
             - "1880:1880"
         env_file:
-            - envs.env
+            - ./Envs/envs.env
             # - envs_test.env
         volumes:
             - ./Config:/Config
