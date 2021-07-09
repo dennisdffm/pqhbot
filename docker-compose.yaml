@@ -5,17 +5,13 @@ services:
     nodered:
         container_name: "NodeRed"
         build: .
-        restart: on-failure
+        restart: on-failure:3
         ports:
             - "1880:1880"
         env_file:
-            - ./Envs/envs.env
-            # - envs_test.env
+            - ${TB_ENVFILE}
         volumes:
-            - ./Config:/Config
-            # - ./Data/flows.json:/data/flows.json
-            # - ./Data/flows_cred.json:/data/flows_cred.json
-            # - ./Data/settings.js:/data/settings.js
+            - ${TB_CONFIG_PATH}:/config
 
     portainer:
         container_name: "Portainer"
